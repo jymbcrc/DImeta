@@ -131,3 +131,53 @@ def get_target_spectrum(scan,library)-> list:
     return(target_spectrum)
        
 
+
+
+
+class Query_Targeted_Spectrum:
+    
+    def __init__(self, mzml_filepath):
+        self.mzml_filepath = mzml_filepath
+        self.tmp = pyteomics.mzml.read(mzml_filepath, use_index=True)
+
+    def get_query_spectrum(self, scan) -> list:
+        ms_level = self.tmp.get_by_index(scan)['ms level']
+        mzs, intens, label = [], [], []
+
+        if ms_level == 2:
+            mz = self.tmp.get_by_index(scan)['m/z array']
+            inten = self.tmp.get_by_index(scan)['intensity array']
+            filter_mz_inten = [(x, y) for x, y in zip(mz, inten) if y > 4000]
+            if filter_mz_inten:
+                mzs, intens = zip(*filter_mz_inten)
+            else:
+                mzs, intens = [], []
+            label = [str(scan)] * len(mzs)
+        else:
+            label = []
+
+        return list(zip(mzs, intens, label))
+
+    def get_realtime_lib(self, scan, library) -> list:
+        
+        ms_level = self.tmp.get_by_index(scan)['ms level']
+        
+        realtime_lib = []
+        
+        if ms_level == 2:
+            precursor = float(self.tmp.get_by_index(scan)['precursorList']['precursor'][0]['isolationWindow']['isolation window target m/z'])
+            realtime_lib = [item for item in library if (precursor - 0.1 < float(item['precursormz']) < precursor + 0.1)]
+        
+        return realtime_lib
+
+    def get_target_spectrum(self, scan, library) -> list:
+        
+        real = self.get_realtime_lib(scan, library)
+        
+        target_spectrum = []
+        
+        for i in range(len(real)):
+            target_spectrum.extend(list(zip(real[i]['mz'], real[i]['intensity'], [str(i)] * len(real[i]['mz']))))
+        
+        return target_spectrum
+
