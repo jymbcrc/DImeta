@@ -1,6 +1,7 @@
 from pyteomics import mgf
 import os
 import glob
+import heapq
 
 
 class LibraryLoadingStrategy:
