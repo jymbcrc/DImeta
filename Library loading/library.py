@@ -66,20 +66,17 @@ class LibraryReformat:
         self.topnum = topnum
 
     def reformat_spectrum(self, spectrum):
-        # Check if the length of 'mz' is less than topnum
         if len(spectrum['mz']) <= self.topnum:
             return spectrum.copy()
 
-        paired_sorted = sorted(zip(spectrum['mz'], spectrum['intensity']), key=lambda pair: pair[1], reverse=True)
-      
-        top_pairs = paired_sorted[:self.topnum]
-        top_mz, top_intensity = zip(*top_pairs)
+        # Use a min heap to keep track of top elements
+        paired = zip(spectrum['mz'], spectrum['intensity'])
+        top_pairs = heapq.nlargest(self.topnum, paired, key=lambda pair: pair[1])
 
-        # Create a new dictionary with the top mz and intensity pairs, preserving other metadata
-        new_spectrum = spectrum.copy()  # Copy the original spectrum dictionary
-        new_spectrum['mz'] = list(top_mz)
-        new_spectrum['intensity'] = list(top_intensity)
-        new_spectrum['num peaks'] = str(len(new_spectrum['mz']))
+        top_mz, top_intensity = zip(*top_pairs) if top_pairs else ([], [])
+
+        new_spectrum = {**spectrum, 'mz': list(top_mz), 'intensity': list(top_intensity)}
+        new_spectrum['num peaks'] = str(len(top_mz))
 
         return new_spectrum
 
