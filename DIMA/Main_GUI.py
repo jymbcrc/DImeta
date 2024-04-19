@@ -2,7 +2,9 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QWidget
 import sys
 from GUI_LibraryReformat import LibraryReformatterGUI
-from GUI_id import Identification_GUI
+from GUI_identification import Identification_GUI
+from Quantification_GUI import Meta_Quantification_GUI 
+
 # Assuming Identification_GUI and LibraryReformatterGUI classes are defined
 
 class TableWindow(QMainWindow):
@@ -18,11 +20,13 @@ class TableWindow(QMainWindow):
         # Add tabs
         
         self.Libtab = LibraryReformatterGUI()
-        self.IDtab = Identification_GUI()
+        self.IDtab = Identification_GUI()         
+        self.Quantab = Meta_Quantification_GUI()
         
         
         self.tabs.addTab(self.Libtab, "Library Reformatter")
-        self.tabs.addTab(self.IDtab, "Identification")
+        self.tabs.addTab(self.IDtab, "Metabolite Identification")
+        self.tabs.addTab(self.Quantab, "Metabolite Quantification")
         
         
 def main():

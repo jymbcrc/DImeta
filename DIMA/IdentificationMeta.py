@@ -42,7 +42,7 @@ class QueryTargetedSpectrum:
         if ms_level == 2:
             mz = self.tmp.get_by_index(scan)['m/z array']
             inten = self.tmp.get_by_index(scan)['intensity array']
-            filter_mz_inten = [(x, y) for x, y in zip(mz, inten) if y > 4000]
+            filter_mz_inten = [(x, y) for x, y in zip(mz, inten) if y > 3000]
             if filter_mz_inten:
                 mzs, intens = zip(*filter_mz_inten)
             else:
@@ -60,7 +60,7 @@ class QueryTargetedSpectrum:
         if ms_level == 2:
             mz = self.tmp[scan]['m/z array']
             inten = self.tmp[scan]['intensity array']
-            filter_mz_inten = [(x, y) for x, y in zip(mz, inten) if y > 4000]
+            filter_mz_inten = [(x, y) for x, y in zip(mz, inten) if y > 3000]
             if filter_mz_inten:
                 mzs, intens = zip(*filter_mz_inten)
             else:
