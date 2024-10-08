@@ -1,2 +1,2 @@
 # DIMA
-Direct infusion metabolomic data analysis
+Metabolomic data analysis for direct infusion mass spectrometry 
