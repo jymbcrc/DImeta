@@ -1,4 +1,4 @@
-# DIMA
+# DImeta
 
 This software is developed for metabolites annotation and quantification from direct injection mass spectrometry. 
 
