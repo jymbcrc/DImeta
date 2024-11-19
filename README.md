@@ -11,7 +11,6 @@ Considering the varying file formats and data structures of library files from d
 
 <img src="images/Picture1.png" alt="Workflow Diagram" style="float: left; margin-right: 12px;" width="400">
 
-
 Metabolite identification is based on the accurate matching of primary precursor ions and secondary fragment ions. Cosine similarity algorithm is used to compare and score the matches against MS2 spectra in input library. The input file format for identification should be **.mzML** or **.mzXML**. The parameters for the identification process include: 
 -  Minimum matched fragments, 
 -  Fragment ion intensity cutoff, 
@@ -23,7 +22,7 @@ Metabolite identification is based on the accurate matching of primary precursor
 
 <img src="images/Picture2.png" alt="Workflow Diagram" style="float: left; margin-right: 12px;" width="400">
 
-Quantification is based on the intensity of strongest fragment peak from MS2 spectrum. 
+Quantification is based on the intensity of strongest fragment ion from MS2 spectrum. For batch data identification, we can select a folder containing all identification results for quantification and alignment. The final results are exported as a .csv file, which includes all sample names, identified metabolites, and their corresponding quantifies.
 
 
 
