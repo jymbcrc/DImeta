@@ -9,9 +9,7 @@ This software primarily consists of three modules:
 
 Considering the varying file formats and data structures of library files from different database sources, we redesigned the library import and integration module. This module supports the reading of library files in both **.mgf** and **.msg** formats and allows simultaneous processing of multiple library files from different sources. The output file format is **.msp**, and the number of fragment ions in MS2 spectra of the output library is configurable.
 
-![Metabolite identification](images/Picture1.png)
-
-
+<img src="images/Picture1.png" alt="Workflow Diagram" style="float: left; margin-right: 12px;" width="400">
 
 
 Metabolite identification is based on the accurate matching of primary precursor ions and secondary fragment ions. Cosine similarity algorithm is used to compare and score the matches against MS2 spectra in input library. The input file format for identification should be **.mzML** or **.mzXML**. The parameters for the identification process include: 
@@ -23,7 +21,7 @@ Metabolite identification is based on the accurate matching of primary precursor
 -  #Scan range
 -  Generate plots for identified metabolites or not
 
-<img src="images/Picture2.png" alt="Workflow Diagram" style="float: left; margin-right: 10px;" width="400">
+<img src="images/Picture2.png" alt="Workflow Diagram" style="float: left; margin-right: 12px;" width="400">
 
 Quantification is based on the intensity of strongest fragment peak from MS2 spectrum. 
 
