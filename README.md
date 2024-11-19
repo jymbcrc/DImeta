@@ -17,7 +17,7 @@ Metabolite identification is based on the accurate matching of primary precursor
 -  Cosine score threshold, 
 -  #Scan range
 -  Generate plots for identified metabolites or not
-![Metabolite identification](DImeta/images/piture2.png)
+![Metabolite identification](images/picture2.png)
 Quantification is based on the intensity of strongest fragment peak from MS2 spectrum. 
 
 
