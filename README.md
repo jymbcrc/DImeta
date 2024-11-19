@@ -16,6 +16,7 @@ Metabolite identification is based on the accurate matching of primary precursor
 -  Fragment ion Mass Tolerance, 
 -  Cosine score threshold, 
 -  #Scan range
+-  Generate plots for identified metabolites or not
 
 Quantification is based on the intensity of strongest fragment peak from MS2 spectrum. 
 
