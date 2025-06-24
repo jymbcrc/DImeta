@@ -24,7 +24,3 @@ Metabolite identification is based on the accurate matching of primary precursor
 
 Quantification is based on the intensity of strongest fragment ion from MS2 spectrum. For batch data identification, we can select a folder containing all identification results for quantification and alignment. The final results are exported as a .csv file, which includes all sample names, identified metabolites, and their corresponding quantifies.
 
-
-
-
-
